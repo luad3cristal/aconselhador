@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-cyan: hsl(193, 38%, 86%);
+  --neon-green: hsl(150, 100%, 66%);
+  --grayish-blue: hsl(217, 19%, 38%);
+  --dark-grayish-blue: hsl(217, 19%, 24%);
+  --dark-blue: hsl(218, 23%, 16%);
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--dark-blue);
+
+  font-family: "Manrope", sans-serif;
+}
+
+main {
+  width: 550px;
+  max-width: 90%;
+  height: 350px;
+  max-height: 60%;
+
+  background-color: var(--dark-grayish-blue);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  position: relative;
+}
+
+main p {
+  position: absolute;
+  top: 10%;
+
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: var(--neon-green);
+}
+
+main section {
+  display: flex;
+  align-items: center;
+
+  color: white;
+  width: 80%;
+}
+
+main section h1 {
+  font-size: 26px;
+  font-weight: 800;
+
+  text-align: center;
+  width: 100%;
+
+  transition: opacity 0.4s ease-in-out;
+  opacity: 1;
+}
+
+main section h1.hidden {
+  opacity: 0;
+}
+
+main .divisor {
+  position: absolute;
+  bottom: 14%;
+
+  background-image: url("./assets/pattern-divider-desktop.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  height: 6%;
+}
+
+main .dice {
+  max-width: 80%;
+
+  z-index: 0;
+  cursor: pointer;
+
+  background-color: var(--neon-green);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.8rem;
+  border-radius: 50%;
+
+  position: absolute;
+  bottom: -25px;
+}
+
+main .dice:hover .blur {
+  position: absolute;
+  z-index: -1;
+  padding: 25px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  filter: blur(20px);
+}
+
+main .dice:hover {
+  box-shadow: blur(200px);
+}
