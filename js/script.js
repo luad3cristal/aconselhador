@@ -2,33 +2,38 @@ const dado = document.querySelector("#dice");
 const advice = document.querySelector("#advice");
 const titulo = document.querySelector("#texto");
 
-const maxPalavras = 15;
+let intervalo;
 
 const efeitoDeEscrita = (element, text, speed = 50) => {
+  if (intervalo) {
+    clearInterval(intervalo);
+  }
+
   element.textContent = "";
   let index = 0;
 
-  const interval = setInterval(() => {
+  intervalo = setInterval(() => {
     element.textContent += text[index];
     index++;
 
     if (index >= text.length) {
-      clearInterval(interval);
+      clearInterval(intervalo);
+      intervalo = 0;
     }
   }, speed);
 };
 
 const carregarConselho = () => {
   advice.classList.add("hidden");
-  texto.textContent = "";
+  titulo.textContent = " ";
 
   adviceApi
     .getAdvice()
     .then((conselho) => {
-      efeitoDeEscrita(texto, `ADVICE #${conselho.id}`, 50);
+      efeitoDeEscrita(titulo, `ADVICE #${conselho.id}`);
+      
       setTimeout(() => {
         advice.textContent = `"${conselho.advice}"`;
-
         advice.classList.remove("hidden");
       }, 800);
     })
