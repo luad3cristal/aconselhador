@@ -123,8 +123,4 @@ main .dice:hover .blur {
   main .dice:hover .blur {
     filter: none;
   }
-
-  main .dice:active .blur {
-    filter: blur(20px);
-  }
 }
