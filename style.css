@@ -115,6 +115,16 @@ main .dice:hover .blur {
   filter: blur(20px);
 }
 
-main .dice:hover {
-  box-shadow: blur(200px);
+@media (max-width: 376px) {
+  main .divisor {
+    background-image: url("./assets/pattern-divider-mobile.svg");
+  }
+
+  main .dice:hover .blur {
+    filter: none;
+  }
+
+  main .dice:active .blur {
+    filter: blur(20px);
+  }
 }

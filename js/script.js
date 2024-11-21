@@ -1,13 +1,8 @@
-const divisor = document.querySelector(".divisor");
 const dado = document.querySelector("#dice");
 const advice = document.querySelector("#advice");
 const titulo = document.querySelector("#texto");
 
 const maxPalavras = 15;
-
-if (window.innerWidth <= 375) {
-  divisor.style.backgroundImage = "url('./assets/pattern-divider-mobile.svg')";
-}
 
 function checarString(texto) {
   return texto.split(" ").length;
@@ -45,7 +40,8 @@ function carregarConselho() {
       }, 800);
     })
     .catch((error) => {
-      advice.textContent = "Não foi possível carregar o conselho. Tente novamente.";
+      advice.textContent =
+        "Não foi possível carregar o conselho. Tente novamente.";
       console.error("Erro ao carregar o conselho:", error);
     });
 }
