@@ -4,11 +4,7 @@ const titulo = document.querySelector("#texto");
 
 const maxPalavras = 15;
 
-function checarString(texto) {
-  return texto.split(" ").length;
-}
-
-function efeitoDeEscrita(element, text, speed = 50) {
+const efeitoDeEscrita = (element, text, speed = 50) => {
   element.textContent = "";
   let index = 0;
 
@@ -20,18 +16,15 @@ function efeitoDeEscrita(element, text, speed = 50) {
       clearInterval(interval);
     }
   }, speed);
-}
+};
 
-function carregarConselho() {
+const carregarConselho = () => {
   advice.classList.add("hidden");
   texto.textContent = "";
 
   adviceApi
     .getAdvice()
     .then((conselho) => {
-      if (checarString(conselho.advice) > maxPalavras) {
-        return carregarConselho();
-      }
       efeitoDeEscrita(texto, `ADVICE #${conselho.id}`, 50);
       setTimeout(() => {
         advice.textContent = `"${conselho.advice}"`;
@@ -44,7 +37,7 @@ function carregarConselho() {
         "Não foi possível carregar o conselho. Tente novamente.";
       console.error("Erro ao carregar o conselho:", error);
     });
-}
+};
 
 dado.addEventListener("click", carregarConselho);
 carregarConselho();
